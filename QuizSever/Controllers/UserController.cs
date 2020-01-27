@@ -36,7 +36,7 @@ namespace QuizSever.Controllers
                     return StatusCode(401, "Incorrect Password");
                 }
 
-                return Ok(userFromDb);
+                return Ok();
             }
             catch (Exception)
             {
