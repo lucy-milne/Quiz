@@ -8,6 +8,7 @@ namespace Repository
         private RepositoryContext _repoContext;
         private IQuestionRepository _question;
         private IQuizRepository _quiz;
+        private IUserRepository _user;
 
         public RepositoryWrapper(RepositoryContext repositoryContext)
         {
@@ -37,6 +38,18 @@ namespace Repository
                 }
 
                 return _quiz;
+            }
+        }
+        public IUserRepository User
+        {
+            get
+            {
+                if (_user == null)
+                {
+                    _user = new UserRepository(_repoContext);
+                }
+
+                return _user;
             }
         }
 

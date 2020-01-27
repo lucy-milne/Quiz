@@ -66,9 +66,6 @@ namespace QuizSever.Controllers
                 _repository.Question.CreateQuestion(questionEntity);
                 _repository.Save();
 
-                var createdQuestion = _mapper.Map<QuestionDto>(questionEntity);
-                Console.WriteLine(createdQuestion);
-
                 return Ok();
             }
             catch (Exception ex)
