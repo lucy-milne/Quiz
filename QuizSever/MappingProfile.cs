@@ -12,6 +12,7 @@ namespace QuizSever
             CreateMap<Quiz, QuizDto>();
             CreateMap<QuizForCreationDto, Quiz>();
             CreateMap<QuestionForCreationsDto, Questions>();
+            CreateMap<UserDto, User>();
         }
     }
 }
