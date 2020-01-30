@@ -27,7 +27,7 @@ namespace QuizSever.Controllers
         }
 
         [Route("getuser")]
-        public IActionResult GetUser([FromBody] UserDto user)
+        public IActionResult GetUser(UserDto user)
         {
             try
             {
@@ -46,7 +46,7 @@ namespace QuizSever.Controllers
 
         [Route("createuser")]
         [HttpPost]
-        public IActionResult CreateUser([FromBody] UserDto user)
+        public IActionResult CreateUser( UserDto user)
         {
             try
             {

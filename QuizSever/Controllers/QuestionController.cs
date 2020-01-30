@@ -24,21 +24,21 @@ namespace QuizSever.Controllers
             _logger = logger;
         }
 
-        [HttpGet]
-        public IActionResult GetAllQuestions()
-        {
-            try
-            {
-                var questions = _repository.Question.GetAllQuestions();
-                var questionsResult = _mapper.Map<IEnumerable<QuestionDto>>(questions).ToList();
-                return Ok(questionsResult);
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError($"Something went wrong inside GetAllQuestions action: {ex.Message}");
-                return StatusCode(500, "Internal server error");
-            }
-        }
+//        [HttpGet]
+//        public IActionResult GetAllQuestions()
+//        {
+//            try
+//            {
+//                var questions = _repository.Question.GetAllQuestions();
+//                var questionsResult = _mapper.Map<IEnumerable<QuestionDto>>(questions).ToList();
+//                return Ok(questionsResult);
+//            }
+//            catch (Exception ex)
+//            {
+//                _logger.LogError($"Something went wrong inside GetAllQuestions action: {ex.Message}");
+//                return StatusCode(500, "Internal server error");
+//            }
+//        }
 
         [HttpGet("{id}")]
         public IActionResult GetQuestionsForQuiz(Guid id)
@@ -57,7 +57,7 @@ namespace QuizSever.Controllers
         }
 
         [HttpPost]
-        public IActionResult CreateQuestion([FromBody]QuestionForCreationsDto question)
+        public IActionResult CreateQuestion(QuestionForCreationsDto question)
         {
             try
             {
