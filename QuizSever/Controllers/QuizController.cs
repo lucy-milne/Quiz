@@ -24,18 +24,36 @@ namespace QuizSever.Controllers
             _mapper = mapper;
         }
 
-        [HttpGet]
-        public IActionResult GetAllQuizzes()
+        [Route("otherQuizzes")]
+        [HttpPost]
+        public IActionResult GetOtherQuizzes(UserDto user)
         {
             try
             {
-                var quizzes = _repository.Quiz.GetAllQuizzes();
+                var quizzes = _repository.Quiz.GetOtherQuizzes(user.Id);
                 var quizzesResult = _mapper.Map<IEnumerable<QuizDto>>(quizzes).ToList();
                 return Ok(quizzesResult);
             }
             catch (Exception ex)
             {
                 _logger.LogError($"Something went wrong inside GetAllQuestion action: {ex.Message}");
+                return StatusCode(500, "Internal server error");
+            }
+        }
+
+        [Route("usersQuizzes")]
+        [HttpPost]
+        public IActionResult GetUsersQuizzes(UserDto user)
+        {
+            try
+            {
+                var quizzes = _repository.Quiz.GetUsersQuizzes(user.Id);
+                var quizzesResult = _mapper.Map<IEnumerable<QuizDto>>(quizzes).ToList();
+                return Ok(quizzesResult);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"Something went wrong inside GetUsersQuizzes action: {ex.Message}");
                 return StatusCode(500, "Internal server error");
             }
         }

@@ -31,6 +31,18 @@ namespace Repository
                 .ToList();
         }
 
+        public IEnumerable<Quiz> GetOtherQuizzes(string username)
+        {
+            return FindByCondition(quiz => !quiz.Username.Equals(username))
+                .ToList();
+        }
+
+        public IEnumerable<Quiz> GetUsersQuizzes(string username)
+        {
+            return FindByCondition(quiz => quiz.Username.Equals(username))
+                .ToList();
+        }
+
         public Quiz GetQuizById(Guid quizid)
         {
             return FindByCondition(quiz => quiz.Id.Equals(quizid))
